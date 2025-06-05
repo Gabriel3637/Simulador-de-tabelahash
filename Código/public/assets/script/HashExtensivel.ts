@@ -87,4 +87,4 @@ class HashExtensivel<T extends Registro> {
 
 }
 
-export { HashExtensivel };
+//export { HashExtensivel };

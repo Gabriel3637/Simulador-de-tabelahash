@@ -1,0 +1,41 @@
+/* Paleta monocromática baseada em #134062 */
+    :root {
+      --cor-base: #134062;
+      --cor-escura: #0D2F4B;
+      --cor-clara: #1A5276;
+      --cor-intermediaria: #2C7399;
+      --cor-muito-clara: #E6ECF0;
+    }
+
+    #root {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      width: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      background-color: var(--cor-base);
+      color: var(--cor-muito-clara);
+      font-family: Arial, sans-serif;
+    }
+    input, button {
+      background-color: var(--cor-muito-clara);
+      border-color: var(--cor-escura);
+    }
+    button, input[type="radio"] + label {
+      background-color: var(--cor-clara);
+      color: var(--cor-muito-clara);
+    }
+    button:hover, input[type="radio"]:checked + label {
+      background-color: var(--cor-intermediaria);
+    }
+    #output {
+      background-color: var(--cor-escura);
+      border-color: var(--cor-escura);
+    }
