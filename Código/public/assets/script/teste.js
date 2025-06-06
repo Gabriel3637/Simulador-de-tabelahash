@@ -1,16 +1,13 @@
-import {HashExtensivel} from './HashExtensivel.js';
-import {ElementoNumber} from './ElementoNumber.js';
-
-var tabelaHash: HashExtensivel<ElementoNumber> = new HashExtensivel<ElementoNumber>(4);
-
-let listaItens: ElementoNumber[] = []
-
+import { HashExtensivel } from './HashExtensivel.js';
+import { ElementoNumber } from './ElementoNumber.js';
+var tabelaHash = new HashExtensivel(4);
+let listaItens = [];
 listaItens.push(new ElementoNumber(1));
 listaItens.push(new ElementoNumber(2));
 listaItens.push(new ElementoNumber(3));
 listaItens.push(new ElementoNumber(4));
-listaItens.push(new ElementoNumber(5));  
-/*listaItens.push(new ElementoNumber(6));   
+listaItens.push(new ElementoNumber(5));
+/*listaItens.push(new ElementoNumber(6));
 listaItens.push(new ElementoNumber(7));
 listaItens.push(new ElementoNumber(8));
 listaItens.push(new ElementoNumber(9));
@@ -36,6 +33,5 @@ listaItens.push(new ElementoNumber(28));
 listaItens.push(new ElementoNumber(29));
 listaItens.push(new ElementoNumber(30));
 */
-
 tabelaHash.adicioonarItens(listaItens);
 tabelaHash.print();

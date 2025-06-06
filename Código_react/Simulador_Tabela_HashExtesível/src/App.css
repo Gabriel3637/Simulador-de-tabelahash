@@ -1,5 +1,6 @@
 /* Paleta monocromática baseada em #134062 */
     :root {
+      --cor-muito-escura: #081f31;
       --cor-base: #134062;
       --cor-escura: #0D2F4B;
       --cor-clara: #1A5276;
@@ -11,7 +12,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: start;
       height: 100vh;
       width: 100%;
     }
@@ -24,10 +25,17 @@
       color: var(--cor-muito-clara);
       font-family: Arial, sans-serif;
     }
+
+    h1{
+      background-color: var(--cor-muito-escura);
+    }
+
     input, button {
       background-color: var(--cor-muito-clara);
       border-color: var(--cor-escura);
     }
+
+
     button, input[type="radio"] + label {
       background-color: var(--cor-clara);
       color: var(--cor-muito-clara);
@@ -38,4 +46,5 @@
     #output {
       background-color: var(--cor-escura);
       border-color: var(--cor-escura);
+      overflow-x: scroll;
     }

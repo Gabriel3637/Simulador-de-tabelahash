@@ -1,8 +1,8 @@
 interface Registro {
     hashCode(): number; 
     toString(): string;
-    getConteudo(): number;
+    getConteudo(): number | string;
     clone(): this;
 }
 
-//export {Registro};
+export type {Registro};

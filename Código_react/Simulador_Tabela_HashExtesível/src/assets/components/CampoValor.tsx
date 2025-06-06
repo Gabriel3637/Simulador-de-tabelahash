@@ -1,9 +1,15 @@
 
 function CampoValor(props: any) {
+  let tmp: string = "";
   if(props.tipo === 'number') {
     return (
       <input
-        onChange={(e) => props.set(Number(e.target.value))}
+        onChange={(e) => {if(e.target.value !== "") {
+          props.set(Number(e.target.value));
+        }else { 
+          props.set("");
+        }
+        }}
         value={props.item}
         id="keyInput"
         type="number"

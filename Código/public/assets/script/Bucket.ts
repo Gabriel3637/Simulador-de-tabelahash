@@ -1,5 +1,5 @@
 // Imoportando interfaces e classes necessárias
-import { Registro } from "./Registro";  
+import type { Registro } from "./Registro";  
 
 
 class Bucket<T extends Registro> {
@@ -17,7 +17,7 @@ class Bucket<T extends Registro> {
     - profundidadeLocal: número que define a profundidade local do bucket (padrão é 1).
     Retorno: Nenhum.
     */
-    constructor(capacidade: number, profundidadeLocal: number = 1) {
+    constructor(capacidade: number, profundidadeLocal: number = 0) {
         this.quantidade = 0;
         this.capacidade = capacidade;
         this.profundidadelocal = profundidadeLocal;
@@ -39,8 +39,44 @@ class Bucket<T extends Registro> {
             this.itens.push(item);
             this.quantidade++;
             resp = true;
-        } else {
-            resp = false;
+        }
+        return resp;
+    }
+
+    /*
+    Identidade: removerItem()
+    Objetivo: Remove um item do bucket se ele existir.
+    Parametros:
+    - item: objeto do tipo T que implementa a interface Registro.
+    Retorno: booleano indicando se o item foi removido com sucesso.
+    - true se o item foi removido
+    - false se o item não foi encontrado no bucket.
+    */
+    public removerItem(item: T): boolean {
+        let resp: boolean = false;
+        const index = this.itens.findIndex(i => i.getConteudo() === item.getConteudo());
+        if (index !== -1) {
+            this.itens.splice(index, 1);
+            this.quantidade--;
+            resp = true;
+        }
+        return resp;
+    }
+
+    /*
+    Identidade: buscarItem()
+    Objetivo: Busca um item no bucket.
+    Parametros:
+    - item: objeto do tipo T que implementa a interface Registro.
+    Retorno: Referência ao item encontrado ou null se não encontrado.
+    - Se o item não for encontrado, retorna null.
+    - Se o item for encontrado, retorna uma referência ao item.
+    */
+    public buscarItem(item: T): T | null {
+        let resp: T | null = null;
+        const index = this.itens.findIndex(i => i.getConteudo() === item.getConteudo());
+        if (index !== -1) {
+            resp = this.itens[index];
         }
         return resp;
     }

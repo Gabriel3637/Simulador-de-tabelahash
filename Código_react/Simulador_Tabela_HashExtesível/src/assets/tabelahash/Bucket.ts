@@ -17,7 +17,7 @@ class Bucket<T extends Registro> {
     - profundidadeLocal: número que define a profundidade local do bucket (padrão é 1).
     Retorno: Nenhum.
     */
-    constructor(capacidade: number, profundidadeLocal: number = 1) {
+    constructor(capacidade: number, profundidadeLocal: number = 0) {
         this.quantidade = 0;
         this.capacidade = capacidade;
         this.profundidadelocal = profundidadeLocal;

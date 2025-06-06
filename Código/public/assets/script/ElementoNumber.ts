@@ -1,5 +1,5 @@
-import { Registro } from "./Registro.js";
-class Elemento implements Registro{
+import type { Registro } from "./Registro";
+class ElementoNumber implements Registro{
     private conteudo: number;
     constructor(conteudo: number) {
         this.conteudo = conteudo;
@@ -17,8 +17,8 @@ class Elemento implements Registro{
         return `${this.conteudo}`;
     }
     public clone(): this {
-        return new Elemento(this.conteudo) as this;
+        return new ElementoNumber(this.conteudo) as this;
     }
 }
 
-export { Elemento };
+export { ElementoNumber };
