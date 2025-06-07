@@ -1,36 +1,59 @@
-import useState from 'react';
-import { inserirChar, buscarChar, removerChar } from '../script/script';
-import { inserirNumber, buscarNumber, removerNumber } from '../script/script';
-import { p } from 'milliparsec';
 
-function BotoesOperacoes(props: any) {
-    if(props.tipoEnt == 'number') {
-        return (
-            <div className="flex space-x-4">
-                <button onClick={(e) => {
-                    if(props.item !== ''){
-                        inserirNumber(props.setHash, props.tabela, props.item, e, props.referenciaCanvas);
+import { inserir, buscar, remover } from '../script/script';
+import type { DesenharHashExtensivel } from '../tabelahash/DesenharHashExtensível';
+import type { HashExtensivel } from '../tabelahash/HashExtensivel';
+import type { Registro } from '../tabelahash/Registro';
+
+interface PropsOperacoes{
+    item: number | string
+    setTabelaHash: React.Dispatch<React.SetStateAction<HashExtensivel<Registro>>>;
+    tabelaHash: HashExtensivel<Registro>
+    update: React.Dispatch<React.SetStateAction<boolean>>;
+    desenho: DesenharHashExtensivel
+    referenciaCanvas: React.RefObject<HTMLCanvasElement | null>
+    setStatus : React.Dispatch<React.SetStateAction<[string, string]>>;
+}
+
+function BotoesOperacoes(props: PropsOperacoes) {
+    return (
+        <div className="flex place-content-evenly">
+            <button onClick={() => {
+                if(props.item !== ''){
+                    if(inserir(props.setTabelaHash, props.tabelaHash, props.item)){
+                        props.setStatus(["[SUCESS]: Valor inserido com sucesso!", "green"]);
                         props.update((u:boolean)=> !u);
+                    } else {
+                        props.setStatus(["[ERRO]: Valor já existe!", "red"])
                     }
-                }} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Inserir</button>
-                <button onClick={(e) => buscarNumber(props.tabela, props.item, e, props.referenciaCanvas)} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Buscar</button>
-                <button onClick={(e) => removerNumber(props.setHash, props.tabela, props.item, e, props.referenciaCanvas)} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Remover</button>
-            </div>
-        );
-    } else {
-        return (
-            <div className="flex space-x-4">
-                <button onClick={(e) => {
-                    if(props.item !== ''){
-                        inserirChar(props.setHash, props.tabela, props.item, e, props.referenciaCanvas);
+                }else{
+                    props.setStatus(["[ERRO]: Valor inválido!", "red"])
+                }
+            }} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Inserir</button>
+            <button onClick={() => {
+                if(props.item !== ''){
+                    if(buscar(props.tabelaHash, props.item, props.desenho, props.referenciaCanvas)){
+                        props.setStatus(["[SUCESS]: Valor encontrado!", "green"]);
+                    }else {
+                        props.setStatus(["[ERRO]: Valor não encontrado!", "red"])
+                    }
+                } else {
+                    props.setStatus(["[ERRO]: Valor inválido!", "red"]);
+                }
+            }} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Buscar</button>
+            <button onClick={() => {
+                if(props.item !== ''){
+                    if(remover(props.setTabelaHash, props.tabelaHash, props.item)){
+                        props.setStatus(["[SUCESS]: Valor removido!", "green"])
                         props.update((u:boolean)=> !u);
+                    } else {
+                        props.setStatus(["[ERRO]: Valor inexistente!", "red"])
                     }
-                }} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Inserir</button>
-                <button onClick={(e) => buscarChar(props.tabela, props.item, e)} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Buscar</button>
-                <button onClick={(e) => removerChar(props.setHash, props.tabela, props.item, e)} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Remover</button>
-            </div>
-        );
-    }
+                }else{
+                    props.setStatus(["[ERRO]: Valor inválido!", "red"])
+                }
+            }} className="px-4 py-2 rounded hover:bg-[var(--cor-intermediaria)]">Remover</button>
+        </div>
+    );
 }
 
 export default BotoesOperacoes;

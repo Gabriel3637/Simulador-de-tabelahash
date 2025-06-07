@@ -1,26 +1,33 @@
-import type { ElementoChar } from "../tabelahash/ElementoChar";
-import type { ElementoNumber } from "../tabelahash/ElementoNumber";
+import type { ElementoChar, ElementoNumber } from "../tabelahash/Elementos";
 import { HashExtensivel } from "../tabelahash/HashExtensivel";
+import type { Registro } from "../tabelahash/Registro";
 
-function CampoTamanho(props: any){
+interface PropsTamanho{
+    tamanho: number;
+    setTamanho: React.Dispatch<React.SetStateAction<number>>;
+    tabelaHash: HashExtensivel<Registro>;
+    setTabelaHash: React.Dispatch<React.SetStateAction<HashExtensivel<Registro>>>;
+    update: React.Dispatch<React.SetStateAction<boolean>>;
+    tipo: string;
+    setStatus: React.Dispatch<React.SetStateAction<[string, string]>>
+}
+
+function CampoTamanho(props: PropsTamanho){
     return(
-        <div className="flex flex-row items-center p-6 rounded-b-lg w-full max-w-full h-full">
+        <div className="flex flex-row items-center p-1 rounded-b-lg w-full max-w-full h-full">
         <label htmlFor="keyInput" className="text-white bg-[var(--cor-muito-escura)] p-2 rounded-l-md h-full">
             Tamanho do Bucket:
         </label>
         <input
         onChange={(e) => {
-            console.log("Tamanho do bucket alterado para: ", e.target.value);
-            props.set(Number(e.target.value)); 
-            if(Number(e.target.value) > 0){ 
-                if(props.tipo === 'number'){
-                    props.tabelahash(new HashExtensivel<ElementoNumber>(props.tamanho, props.referenciaCanvas));
-                }else { 
-                    props.tabelahash(new HashExtensivel<ElementoChar>(props.tamanho, props.referenciaCanvas));
-                }
+            props.setTamanho(Number(e.target.value)); 
+            if(Number(e.target.value) > 0 && (/^-?\d+$/.test(e.target.value))){ 
+                props.tabelaHash.modificarCapacidade(Number(e.target.value))
+                props.setTabelaHash(props.tabelaHash);
+    
                 props.update((u:boolean)=> !u)
-            } else {
-                props.set(1);
+            }else{
+                props.setStatus(["[ERRO]: Tamanho inválido!", "red"])
             }
         }}
         value={props.tamanho}

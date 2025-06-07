@@ -46,5 +46,4 @@
     #output {
       background-color: var(--cor-escura);
       border-color: var(--cor-escura);
-      overflow-x: scroll;
     }

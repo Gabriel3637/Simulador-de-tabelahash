@@ -72,11 +72,11 @@ class Bucket<T extends Registro> {
     - Se o item não for encontrado, retorna null.
     - Se o item for encontrado, retorna uma referência ao item.
     */
-    public buscarItem(item: T): T | null {
-        let resp: T | null = null;
+    public buscarItem(item: T): number {
+        let resp: number = -1;
         const index = this.itens.findIndex(i => i.getConteudo() === item.getConteudo());
         if (index !== -1) {
-            resp = this.itens[index];
+            resp = index;
         }
         return resp;
     }
