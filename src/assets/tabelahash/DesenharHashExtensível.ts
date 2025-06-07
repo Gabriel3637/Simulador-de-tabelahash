@@ -162,20 +162,6 @@ class DesenharHashExtensivel {
     }
 
     /*
-    Identidade: corAleatoriaRGB()
-    Objetivo: Gerar uma cor sólida aleatória
-    Parâmetros: Nenhum
-    Retorno: String contendo o rgba da cor aleatória
-    */
-    private corAleatoriaRGB(): string {
-        const r = Math.floor(23 + Math.random() * 200);
-        const g = Math.floor(23 + Math.random() * 200);
-        const b = Math.floor(23 + Math.random() * 200);
-        const a = 1.0
-        return `rgb(${r}, ${g}, ${b}, ${a})`;
-    }
-
-    /*
     Identidade: desenharHashTable()
     Objetivo: Desenhar a tabela hash no canvas
     Parâmetros:
@@ -269,7 +255,6 @@ class DesenharHashExtensivel {
     public desenharBusca(x:number, y: number, posicaoBucket:number, posicaoItem:number){
         let bucket: Bucket<Registro> = this.hashExtensivel.getBuckets()[posicaoBucket];
         let posX:number = x + 50;
-        let posY:number = y;
         let posYPrimeiroItem: number = posicaoBucket;
         let posicaoEncontrar: number = posicaoItem;
         let contador: number = 0;
@@ -283,6 +268,7 @@ class DesenharHashExtensivel {
         if(this.ctx && this.canvas){
             //Animar busca no bucket
             const animateX = (time: DOMHighResTimeStamp)=>{
+                time;
                 if(this.ctx && this.canvas){
                     
                     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.width);
@@ -305,6 +291,7 @@ class DesenharHashExtensivel {
             }
 
             const animateSeta = (time: DOMHighResTimeStamp) => {
+                time;
                 this.desenharSeta(x+100, 125 + (50 * posicaoBucket), x+250, 125 + (posYPrimeiroItem * 50), 'blue', 3, 15);
                 contador = contador + 1;
                 if(contador < 40){
@@ -317,6 +304,7 @@ class DesenharHashExtensivel {
             }
 
             const animaIndice = (time: DOMHighResTimeStamp) => {
+                time;
                 this.escrverTexto(x, 130 + (50 * posicaoBucket), `${posicaoBucket}`, 'blue', 'bold  16px Arial');
                 contador = contador + 1;
                 if(contador < 40){
@@ -328,7 +316,7 @@ class DesenharHashExtensivel {
             }
 
             const animateY = (time: DOMHighResTimeStamp)=>{
-                console.log(posicaoBucket);
+                time;
                 this.desenharHashTable(x, y);
                 this.desenharRetangulo(x+50, y + 50 + (50 * posicaoBucket), 100, 50,  'rgba(0, 0, 0, 0.0)', 'blue', 3);
                 contador = contador + 1;
@@ -343,35 +331,6 @@ class DesenharHashExtensivel {
                     requestAnimationFrame(animateSeta);
                 }
             }
-            //Animar busca no hash
-            /*
-            const animateY = (time: DOMHighResTimeStamp)=>{
-                if(this.ctx && this.canvas){  
-                    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.width);
-                    this.ctx.beginPath()
-                    this.desenharHashTable(50, 50);
-
-                    this.desenharRetangulo(posX, posY + 50, 100, 50, 'rgba(0, 0, 0, 0.0)', 'blue', 3);
-                    posY = posY + 1;
-                    if(posY < 50 + (50 * posicaoBucket)){
-                        requestAnimationFrame(animateY);
-                    }else{
-                        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.width);
-                        this.ctx.beginPath()
-                        this.desenharHashTable(50, 50);
-
-                        
-                        if(bucket.getProfundidadeLocal() < this.hashExtensivel.getProfundidadeGlobal()){
-                            posYPrimeiroItem = posicaoBucket % (2**bucket.getProfundidadeLocal());
-                        }
-
-                        requestAnimationFrame(animateSeta);
-                        
-                        
-                    }
-                }
-
-            }*/
             requestAnimationFrame(animaIndice);
         }
     }

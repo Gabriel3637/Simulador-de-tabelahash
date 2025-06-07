@@ -1,4 +1,3 @@
-import type { ElementoChar, ElementoNumber } from "../tabelahash/Elementos";
 import { HashExtensivel } from "../tabelahash/HashExtensivel";
 import type { Registro } from "../tabelahash/Registro";
 
