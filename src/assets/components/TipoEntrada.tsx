@@ -36,7 +36,7 @@ function TipoEntrada(props: PropsTipoEntrada) {
           onChange={() => {props.setTipoEnt('text'); props.setTabelaHash(new HashExtensivel<ElementoChar>(props.tamanho));  props.update((u:boolean)=> !u)}}
           className="hidden"
         />
-        <label htmlFor="tipoChar" className="px-4 py-2 rounded cursor-pointer">Char</label>
+        <label htmlFor="tipoChar" className="px-4 py-2 rounded cursor-pointer">Letra</label>
       </div>
     </div>
   );

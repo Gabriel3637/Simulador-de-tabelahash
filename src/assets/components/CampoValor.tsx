@@ -28,7 +28,12 @@ function CampoValor(props: PropsValor) {
   } else{
     return (
       <input
-        onChange={(e) => props.setItem(e.target.value)}
+        onChange={(e) => {if(e.target.value.length === 1 && (/^[a-zA-Z]$/.test(e.target.value))){
+          props.setItem(e.target.value)
+        }else{
+          props.setItem("");
+          props.setStatus(["[ERRO]: Valor inválido!", "red"])
+        }}}
         value={props.item}
         id="keyInputChar"
         type="text"

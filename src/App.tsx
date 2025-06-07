@@ -22,26 +22,8 @@ function App() {
   const [update, setUpdate] = useState(true)
   const [status, setStatus] = useState<[string, string]>(["", "green"])
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  let arrayteste: ElementoNumber[] = [];
-  arrayteste.push(new ElementoNumber(1));
-  arrayteste.push(new ElementoNumber(2));
-  arrayteste.push(new ElementoNumber(3));
-  arrayteste.push(new ElementoNumber(4));
-  arrayteste.push(new ElementoNumber(5));
-  arrayteste.push(new ElementoNumber(6));
-  arrayteste.push(new ElementoNumber(7));
-  arrayteste.push(new ElementoNumber(8));
-  arrayteste.push(new ElementoNumber(9));
-  arrayteste.push(new ElementoNumber(10));
-  arrayteste.push(new ElementoNumber(14));
-  arrayteste.push(new ElementoNumber(18));
-  arrayteste.push(new ElementoNumber(22));
-  arrayteste.push(new ElementoNumber(30));
-  arrayteste.push(new ElementoNumber(38));
-  arrayteste.push(new ElementoNumber(27));
-  arrayteste.push(new ElementoNumber(43));
   //console.log("Re-redenrizando o componente App");
-  const [hashTable, sethashTable] = useState<HashExtensivel<Registro>>(() => new HashExtensivel<ElementoNumber>(4, arrayteste));
+  const [hashTable, sethashTable] = useState<HashExtensivel<Registro>>(() => new HashExtensivel<ElementoNumber>(4));
   const [desenhar, setDesenhar] = useState(() => new DesenharHashExtensivel(hashTable, canvasRef));
 
   useEffect(() => {
