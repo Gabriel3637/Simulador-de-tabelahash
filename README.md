@@ -44,7 +44,7 @@ Implementar da forma correta uma Tabela Hash extensível principalmente as opera
 A manipulação eficiente da memória foi um desafio constante, especialmente ao lidar com o redimensionamento da tabela e com a gestão de listas encadeadas. Garantir que a alocação de memória fosse realizada de forma eficiente sem desperdiçar recursos foi uma preocupação contínua durante o desenvolvimento.
 
 ### 3 Visualição gráfica
-Implementar a visualização gráfica exigiu conhecimento sobre manipulação da tag <canvas>, tornando necessário a criação de uma classe com esse intuito, com maior dificuldade na representação de diferentens endereços no hash apontando para o mesmo bucket.
+Implementar a visualização gráfica exigiu conhecimento sobre manipulação da tag \<canvas\>, tornando necessário a criação de uma classe com esse intuito, com maior dificuldade na representação de diferentens endereços no hash apontando para o mesmo bucket.
 
 Apesar desses desafios, todos os requisitos foram implementados com sucesso, e os resultados atingiram as expectativas.  
 
