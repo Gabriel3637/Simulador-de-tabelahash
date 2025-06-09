@@ -7,8 +7,23 @@ Este trabalho prático envolve a implementação de um sistema simulado de uma**
 do projeto de tarefas. A funcionalidade principal consiste em buscar todos os arquivos de dados e índices, utilizando o algoritmo de Hash e ordenar e armazená-los em um único arquivo. O objetivo é permitir a compactação eficiente de todos os valores em uma única tabela, além de possibilitar a recuperação dos valores para versões específicas.
 
 ### Funcionalidades principais:
-. **Armazenamento organizado**: Os backups compactados são salvos em pastas nomeadas com a data/versão do backup.
-. **Descompactação e recuperação**: O sistema permite recuperar os arquivos de uma versão específica escolhida pelo usuário.
+### 1. Inserção de Elementos
+Permite inserir elementos na tabela hash, mapeando-os para índices específicos utilizando uma função de hash.
+
+### 2. Resolução de Colisões
+Implementa técnicas como encadeamento (chaining) e sondagem aberta (open addressing) para lidar com colisões de forma eficiente.
+
+### 3. Busca de Elementos
+Permite buscar elementos na tabela hash, retornando a posição onde o item foi armazenado, caso exista.
+
+### 4. Remoção de Elementos
+Permite remover elementos da tabela hash, ajustando a estrutura para manter a consistência.
+
+### 5. Redimensionamento Dinâmico
+Redimensiona automaticamente a tabela quando o fator de carga atinge um limite, garantindo desempenho ideal.
+
+### 6. Visualização Gráfica
+Oferece uma interface visual interativa para acompanhar a distribuição dos elementos e a resolução de colisões em tempo real.
 
 ## Estrutura do Projeto
 Este projeto consiste em uma implementação básica de uma tabela hash com os seguintes componentes principais:
