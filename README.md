@@ -32,13 +32,10 @@ Este projeto consiste em uma implementação básica de uma tabela hash com os s
 - **Redimensionamento**: Estratégias para redimensionar dinamicamente a tabela conforme o número de elementos cresce.
 - **Testes de Desempenho**: Avaliação de tempo e eficiência para as operações de inserção, remoção e busca.
 ### Diretórios  
-- **`controller`**:    
-   - **Classes principais**:    
-- **`model`**:  
-   - **Classes principais**:
-- **`view`**:  
-   Interação com o usuário para exibir informações e realizar operações de backup e recuperação.  
-   - **Classes principais**  
+- **`controller`**    
+- **`model`**  
+- **`view`**
+    
 ## Experiência e Desafios  
 O desenvolvimento deste trabalho apresentou os seguintes desafios:
 ### 1. Escolha e Implementação da Função de Hash
