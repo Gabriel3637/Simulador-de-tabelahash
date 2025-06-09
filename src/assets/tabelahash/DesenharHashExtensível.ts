@@ -260,7 +260,7 @@ class DesenharHashExtensivel {
         let contador: number = 0;
         if(posicaoEncontrar === -1 && bucket.getQuantidade() !== bucket.getCapacidade()){
             posicaoEncontrar = bucket.getQuantidade();
-        } else {
+        } else if(posicaoEncontrar === -1 && bucket.getQuantidade() === bucket.getCapacidade()){
             posicaoEncontrar = bucket.getQuantidade() - 1;
         }
         
